@@ -3,7 +3,7 @@
 S3QA: Self-Supervised Speech Quality Assessment  
 *A scalable method for automatically evaluating speech quality without human ratings*
 
-This repository provides the model and inference code associated with the paper "Self‑Supervised Speech Quality Assessment (S3QA)" ([arXiv:2506.01655](https://arxiv.org/abs/2506.01655)). It enables users to apply the pretrained S3QA model to estimate speech quality from audio samples. The code includes utilities for preprocessing and running inference on custom audio, making it easy to integrate S3QA into evaluation workflows or downstream applications.
+This repository provides the model and some inference starter code associated with the paper "Self‑Supervised Speech Quality Assessment (S3QA)" ([arXiv:2506.01655](https://arxiv.org/abs/2506.01655)). It enables users to apply the pretrained S3QA model to estimate speech quality from audio samples. The code includes utilities for preprocessing and running inference on custom audio, making it easy to integrate S3QA into evaluation workflows or downstream applications.
 
 # Install
 ```
