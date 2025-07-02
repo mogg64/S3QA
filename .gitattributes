@@ -1,2 +1,2 @@
-ckpts filter=lfs diff=lfs merge=lfs -text
-test_audio filter=lfs diff=lfs merge=lfs -text
+ckpts/** filter=lfs diff=lfs merge=lfs -text
+test_audio/* filter=lfs diff=lfs merge=lfs -text
