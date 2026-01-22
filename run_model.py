@@ -36,6 +36,18 @@ import sys
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 
+def scaling_function(x):
+    a = 20 
+    x0 = .95
+    out_x = []
+    for xj, xi in enumerate(x): 
+        print(xi)
+        if xi <= x0:
+            out_x.append(xi)
+        else:
+            out_x.append( x0 + (1 - x0) * (1 - math.exp(-a * (xi-x0))) / (1 - math.exp(-a * (2 - x0))) )    
+    return out_x
+
 # ############################
 # #### LOAD S3QA MODEL ####
 # ############################
@@ -303,12 +315,20 @@ for idx, f in enumerate(tqdm(audio_files)):
     print(str(mod_speech.shape[-1] / m_sr), outputs)
     s3qa_output_mean = np.mean(outputs)
     s3qa_output_median = np.median(outputs)
+    s3qa_output_mean_unscaled = s3qa_output_mean*1.18468610942363
+    s3qa_output_median_unscaled = s3qa_output_median*1.18468610942363
+    s3qa_output_mean_unscaled01 = scaling_function(s3qa_output_mean_unscaled)
+    s3qa_output_median_unscaled01 = scaling_function(s3qa_output_median_unscaled)
     print(s3qa_output_mean)
 
     output_txt = {
         'fpath': [f],
         's3qa_output_mean': [s3qa_output_mean],
         's3qa_output_median': [s3qa_output_median],
+        's3qa_output_mean_unscaled': [s3qa_output_mean_unscaled],
+        's3qa_output_median_unscaled': [s3qa_output_median_unscaled],
+        's3qa_output_mean_unscaled01': [s3qa_output_mean_unscaled],
+        's3qa_output_median_unscaled01': [s3qa_output_median_unscaled],
         'all_outputs_at_hop': [outputs]
     }
 
