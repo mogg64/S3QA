@@ -317,8 +317,8 @@ for idx, f in enumerate(tqdm(audio_files)):
     s3qa_output_median = np.median(outputs)
     s3qa_output_mean_unscaled = s3qa_output_mean*1.18468610942363
     s3qa_output_median_unscaled = s3qa_output_median*1.18468610942363
-    s3qa_output_mean_unscaled01 = scaling_function(s3qa_output_mean_unscaled)
-    s3qa_output_median_unscaled01 = scaling_function(s3qa_output_median_unscaled)
+    s3qa_output_mean_unscaled01 = scaling_function([s3qa_output_mean_unscaled])[0]
+    s3qa_output_median_unscaled01 = scaling_function([s3qa_output_median_unscaled])[0]
     print(s3qa_output_mean)
 
     output_txt = {
@@ -327,8 +327,8 @@ for idx, f in enumerate(tqdm(audio_files)):
         's3qa_output_median': [s3qa_output_median],
         's3qa_output_mean_unscaled': [s3qa_output_mean_unscaled],
         's3qa_output_median_unscaled': [s3qa_output_median_unscaled],
-        's3qa_output_mean_unscaled01': [s3qa_output_mean_unscaled],
-        's3qa_output_median_unscaled01': [s3qa_output_median_unscaled],
+        's3qa_output_mean_unscaled01': [s3qa_output_mean_unscaled01],
+        's3qa_output_median_unscaled01': [s3qa_output_median_unscaled01],    
         'all_outputs_at_hop': [outputs]
     }
 
